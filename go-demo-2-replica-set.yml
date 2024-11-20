@@ -3,7 +3,7 @@ kind: ReplicaSet
 metadata:
   name: go-demo-2
 spec:
-  replicas: 2
+  replicas: 4
   selector:
     matchLabels:
       type: backend
@@ -19,6 +19,11 @@ spec:
       containers:
       - name: db
         image: mongo:3.4
+        command: ["mongod"]
+        args: ["--rest", "--httpinterface"]
+        ports:
+        - containerPort: 28017
+          protocol: TCP
       - name: api
         image: vfarcic/go-demo-2
         env:

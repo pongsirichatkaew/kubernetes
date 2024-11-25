@@ -8,7 +8,7 @@ spec:
       type: db
       service: go-demo-2
   strategy:
-    type: Recreate
+    type: RollingUpdate
   template:
     metadata:
       labels:
